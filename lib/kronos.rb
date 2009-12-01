@@ -1,6 +1,6 @@
 require 'parsedate'
 
-class Chronos
+class Kronos
   
   attr_accessor :year, :month, :day
   

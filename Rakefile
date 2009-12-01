@@ -4,11 +4,11 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "chronos"
+    gem.name = "kronos"
     gem.summary = %Q{Simple and flexible date parsing.}
-    gem.description = %Q{Chronos provides flexible date parsing. Currently just a thin layer on top of ParseDate.}
+    gem.description = %Q{Kronos provides flexible date parsing. Currently just a thin layer on top of ParseDate.}
     gem.email = "djames@sunlightfoundation.com"
-    gem.homepage = "http://github.com/djsun/chronos"
+    gem.homepage = "http://github.com/djsun/kronos"
     gem.authors = ["David James"]
     gem.add_development_dependency "rspec", ">= 1.2.9"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
@@ -39,7 +39,7 @@ Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 
   rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "chronos #{version}"
+  rdoc.title = "kronos #{version}"
   rdoc.rdoc_files.include('README*')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end

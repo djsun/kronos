@@ -4,13 +4,13 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |s|
-  s.name = %q{chronos}
+  s.name = %q{kronos}
   s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David James"]
   s.date = %q{2009-12-01}
-  s.description = %q{Chronos provides flexible date parsing. Currently just a thin layer on top of ParseDate.}
+  s.description = %q{Kronos provides flexible date parsing. Currently just a thin layer on top of ParseDate.}
   s.email = %q{djames@sunlightfoundation.com}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -23,19 +23,19 @@ Gem::Specification.new do |s|
      "README.md",
      "Rakefile",
      "VERSION",
-     "chronos.gemspec",
-     "lib/chronos.rb",
-     "spec/chronos_spec.rb",
+     "kronos.gemspec",
+     "lib/kronos.rb",
+     "spec/kronos_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb"
   ]
-  s.homepage = %q{http://github.com/djsun/chronos}
+  s.homepage = %q{http://github.com/djsun/kronos}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.5}
   s.summary = %q{Simple and flexible date parsing.}
   s.test_files = [
-    "spec/chronos_spec.rb",
+    "spec/kronos_spec.rb",
      "spec/spec_helper.rb"
   ]
 

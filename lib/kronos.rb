@@ -19,6 +19,14 @@ class Kronos
     self
   end
   
+  def to_hash
+    h = {}
+    h['year']  = year  if year
+    h['month'] = month if month
+    h['day']   = day   if day
+    h
+  end
+  
   def self.parse(string)
     self.new.parse(string)
   end

@@ -136,4 +136,12 @@ describe "Kronos" do
     c.to_hash.should == {}
   end
   
+  it "prior to 1998" do
+    c = Kronos.parse("prior to 1998")
+    c.year.should  == nil
+    c.month.should == nil
+    c.day.should   == nil
+    c.to_hash.should == {}
+  end
+  
 end

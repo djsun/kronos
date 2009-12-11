@@ -8,13 +8,20 @@ class Kronos
     if string =~ /^\d{4}$/
       self.year = string.to_i
     elsif string =~ /^[']?(\d{2})$/
-      n = $1.to_i
-      self.year = n >= 70 ? 1900 + n : 2000 + n
+      self.year = to_full_year($1.to_i)
     else
       values = ParseDate.parsedate(string)
-      self.year  = values[0]
-      self.month = values[1]
-      self.day   = values[2]
+      if values[0]
+        # ParseDate parsed a year
+        self.year  = to_full_year(values[0])
+        self.month = values[1]
+        self.day   = values[2]
+      elsif values[2]
+        # ParseDate parsed a day but not a year
+        self.year  = to_full_year(values[2])
+        self.month = values[1]
+        self.day   = nil
+      end
     end
     self
   end
@@ -29,6 +36,16 @@ class Kronos
   
   def self.parse(string)
     self.new.parse(string)
+  end
+  
+  protected
+  
+  def to_full_year(x)
+    case x
+    when (0 .. 69)  then 2000 + x
+    when (70 .. 99) then 1900 + x
+    else x
+    end
   end
   
 end

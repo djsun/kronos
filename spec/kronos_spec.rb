@@ -97,6 +97,29 @@ describe "Kronos" do
     }
   end
   
+  it "Aug-96" do
+    c = Kronos.parse("Aug-96")
+    c.year.should  == 1996
+    c.month.should == 8
+    c.day.should   == nil
+    c.to_hash.should == {
+      'year'  => 1996,
+      'month' => 8,
+    }
+  end
+
+  it "15-Mar-96" do
+    c = Kronos.parse("15-Mar-96")
+    c.year.should  == 1996
+    c.month.should == 3
+    c.day.should   == 15
+    c.to_hash.should == {
+      'year'  => 1996,
+      'month' => 3,
+      'day'   => 15,
+    }
+  end
+  
   it "empty string" do
     c = Kronos.parse("")
     c.year.should  == nil

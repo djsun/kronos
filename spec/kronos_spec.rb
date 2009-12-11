@@ -132,7 +132,7 @@ describe "Kronos" do
     c = Kronos.parse("unknown")
     c.year.should  == nil
     c.month.should == nil
-    c.day.should  == nil
+    c.day.should   == nil
     c.to_hash.should == {}
   end
   

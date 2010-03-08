@@ -29,6 +29,16 @@ class Kronos
     self
   end
   
+  def valid?
+    if day
+      return false unless month && year
+    end
+    if month
+      return false unless year
+    end
+    true
+  end
+
   def to_hash
     h = {}
     h['year']  = year  if year

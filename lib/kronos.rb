@@ -76,41 +76,9 @@ class Kronos
   end
   
   def ==(other)
-    if !self.year && !other.year
-      true
-    elsif self.year && !other.year
-      false
-    elsif !self.year && other.year
-      false
-    elsif self.year != other.year
-      false
-    elsif self.year == other.year
-      if !self.month && !other.month
-        true
-      elsif self.month && !other.month
-        false
-      elsif !self.month && other.month
-        false
-      elsif self.month != other.month
-        false
-      elsif self.month == other.month
-        if !self.day && !other.day
-          true
-        elsif self.day && !other.day
-          false
-        elsif !self.day && other.day
-          false
-        elsif self.day != other.day
-          false
-        elsif self.day == other.day
-          true
-        end
-      else
-        raise "Unexpected"
-      end
-    else
-      raise "Unexpected"
-    end
+    self.year == other.year &&
+    self.month == other.month &&
+    self.day == other.day 
   end
   
   def >=(other)

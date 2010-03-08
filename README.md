@@ -61,13 +61,13 @@ In the future, I would like Kronos to be able to handle date-related comparisons
 
 The Ruby date libraries that I have seen make the assumption that you are specifying a point (i.e. a particular date), not an interval (such as an entire month or year). Comparing intervals adds a little bit of complexity. For example:
 
-    year = Kronos.parse("1974")
-    month = Kronos.parse("March 1974")
-    year < month    # => false
-    year > month    # => false
-    month == year   # => false
-    year.in?(month) # => false
-    month.in?(year) # => true
+    k_1974       = Kronos.parse("1974")
+    k_march_1974 = Kronos.parse("March 1974")
+    k_1974 < k_march_1974    # => false
+	k_1974 > k_march_1974    # => false
+	k_1974 == k_march_1974   # => false
+	k_march_1974.in?(k_1974) # => true
+	k_1974.in?(k_march_1974) # => false
 
 ## Feedback
 

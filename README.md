@@ -72,11 +72,11 @@ With Kronos, you can compare date objects as follows:
 
 ### A Note about Kronos Comparison Operators
 
-Kronos interprets "<" as "Does the date interval on the left occur completely before the date interval on the right?" In other words, if there is overlap, the result will be false.
+Kronos interprets `<` as "Does the date interval on the left occur completely before the date interval on the right?" In other words, if there is overlap, the result will be false.
 
-Here's an example. If you ask "Does the year 1974 came before March 1974?" a careful response might be: "Actually, part of it comes before and part of it comes after. Your question does not really make sense because March 1974 is contained within the year 1974."
+Here's an example. If you ask "Does the year 1974 come before March 1974?" a careful response might be: "Actually, part of it comes before and part of it comes after. Your question does not really make sense because March 1974 is contained within the year 1974."
 
-Because of this, Konos comparison operators (<, ==, >) behave a little bit differently for Kronos objects than for, say, integers. Given any two integers m and n, you can be sure that one of the operators holds. For example:
+Because of this, Konos comparison operators (`<`, `==`, `>`) behave a little bit differently for Kronos objects than for, say, integers. Given any two integers m and n, you can be sure that one of the operators holds. For example:
 
 	m = 1
 	n = 2

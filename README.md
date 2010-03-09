@@ -69,6 +69,11 @@ The Ruby date libraries that I have seen make the assumption that you are specif
 	k_march_1974.in?(k_1974) # => true
 	k_1974.in?(k_march_1974) # => false
 
+## Contributors
+
+David James (djsun)
+Eric Mill (klondike)
+
 ## Feedback
 
 I would appreciate your feedback. Thanks! (David James, Sunlight Labs, Washington, DC)

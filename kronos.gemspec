@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{kronos}
-  s.version = "0.1.4"
+  s.version = "0.1.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David James"]
@@ -26,7 +26,8 @@ Gem::Specification.new do |s|
      "kronos.gemspec",
      "lib/kronos.rb",
      "spec/compare_spec.rb",
-     "spec/kronos_spec.rb",
+     "spec/from_hash_spec.rb",
+     "spec/parse_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb",
      "spec/valid_spec.rb"
@@ -38,7 +39,8 @@ Gem::Specification.new do |s|
   s.summary = %q{Simple and flexible date parsing.}
   s.test_files = [
     "spec/compare_spec.rb",
-     "spec/kronos_spec.rb",
+     "spec/from_hash_spec.rb",
+     "spec/parse_spec.rb",
      "spec/spec_helper.rb",
      "spec/valid_spec.rb"
   ]

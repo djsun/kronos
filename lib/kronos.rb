@@ -125,6 +125,14 @@ class Kronos
     h
   end
   
+  def self.from_hash(h)
+    o = self.new
+    o.year  = h['year']  if h['year']
+    o.month = h['month'] if h['month']
+    o.day   = h['day']   if h['day']
+    o if o.valid?
+  end
+  
   def self.parse(string)
     self.new.parse(string)
   end

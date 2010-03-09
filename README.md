@@ -55,17 +55,47 @@ In contrast, other date parsing libraries, such as [Chronic](http://github.com/m
 
 Kronos is currently implemented as a thin wrapper over [ParseDate](http://ruby-doc.org/stdlib/libdoc/parsedate/rdoc/index.html).
 
-## Future Plans
+## Date Comparisons
 
-In the future, I would like Kronos to be able to handle date-related comparisons properly.
+Kronos handles date-related comparisons more intelligently.
 
-The Ruby date libraries that I have seen make the assumption that you are specifying a point (i.e. a particular date), not an interval (such as an entire month or year). Comparing intervals adds a little bit of complexity. For example:
+Many Ruby date libraries make the assumption that you are specifying a point (i.e. a particular date), not an interval (such as an entire month or year). Kronos, on the other hand, lets you specify dates that are intervals:
 
-    k_1974       = Kronos.parse("1974")
-    k_march_1974 = Kronos.parse("March 1974")
+	k_1973       = Kronos.parse("1973")
+	k_1974       = Kronos.parse("1974")
+	k_march_1974 = Kronos.parse("March 1974")
+
+With Kronos, you can compare date objects as follows:
+
+	k_1973 < k_1973          # => true
+    k_1973 < k_march_1974    # => true
+
+### A Note about Kronos Comparison Operators
+
+Kronos interprets "<" as "Does the date interval on the left occur completely before the date interval on the right?" In other words, if there is overlap, the result will be false.
+
+Here's an example. If you ask "Does the year 1974 came before March 1974?" a careful response might be: "Actually, part of it comes before and part of it comes after. Your question does not really make sense because March 1974 is contained within the year 1974."
+
+Because of this, Konos comparison operators (<, ==, >) behave a little bit differently for Kronos objects than for, say, integers. Given any two integers m and n, you can be sure that one of the operators holds. For example:
+
+	m = 1
+	n = 2
+	m < n   # => true
+	m == n  # => false
+	m > n   # => false
+
+However, given two Kronos objects k1 and k2 you cannot guarantee that one of the operators will hold. For example:
+
     k_1974 < k_march_1974    # => false
+    k_1973 == k_march_1974   # => false
 	k_1974 > k_march_1974    # => false
-	k_1974 == k_march_1974   # => false
+
+Since the two dates are unequal but overlap, Kronos will always return false.
+
+### Future Work
+
+I plan to implement the `in?` method as follows:
+
 	k_march_1974.in?(k_1974) # => true
 	k_1974.in?(k_march_1974) # => false
 
@@ -80,4 +110,4 @@ Eric Mill (klondike)
 
 ## Feedback
 
-I would appreciate your feedback. Thanks! (David James, Sunlight Labs, Washington, DC)
+We would appreciate your feedback. Thanks!

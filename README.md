@@ -69,6 +69,10 @@ The Ruby date libraries that I have seen make the assumption that you are specif
 	k_march_1974.in?(k_1974) # => true
 	k_1974.in?(k_march_1974) # => false
 
+## History
+
+We import a lot of data from government Web sites as part of our work at the Sunlight Labs (the technical arm of the Sunlight Foundation). I did not want to store date-related information in a way that made it seem more precise than it really was, so I wrote this little library. -David
+
 ## Contributors
 
 David James (djsun)

@@ -30,13 +30,15 @@ class Kronos
   end
   
   def valid?
-    if day
-      return false unless month && year
+    if day && (!month || !year)
+      false
+    elsif month && !year
+      false
+    elsif !year
+      false
+    else
+      true
     end
-    if month
-      return false unless year
-    end
-    true
   end
 
   def <(other)

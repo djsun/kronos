@@ -120,6 +120,14 @@ describe "Kronos" do
     }
   end
   
+  it "nil" do
+    c = Kronos.parse(nil)
+    c.year.should  == nil
+    c.month.should == nil
+    c.day.should   == nil
+    c.to_hash.should == {}
+  end
+  
   it "empty string" do
     c = Kronos.parse("")
     c.year.should  == nil

@@ -7,11 +7,12 @@ class Kronos
   IGNORE_PATTERN = Regexp.compile("^prior")
   
   def parse(string)
-    if string =~ /^\d{4}$/
+    if string.nil? || string =~ IGNORE_PATTERN
+      nil # do nothing
+    elsif string =~ /^\d{4}$/
       self.year = string.to_i
     elsif string =~ /^[']?(\d{2})$/
       self.year = to_full_year($1.to_i)
-    elsif string =~ IGNORE_PATTERN
     else
       values = ParseDate.parsedate(string)
       if values[0]

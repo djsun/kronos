@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{kronos}
-  s.version = "0.1.5"
+  s.version = "0.1.7"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David James"]
-  s.date = %q{2010-03-09}
+  s.date = %q{2010-05-24}
   s.description = %q{Kronos provides flexible date parsing. Currently just a thin layer on top of ParseDate.}
   s.email = %q{djames@sunlightfoundation.com}
   s.extra_rdoc_files = [
@@ -30,6 +30,7 @@ Gem::Specification.new do |s|
      "spec/parse_spec.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb",
+     "spec/to_s_spec.rb",
      "spec/valid_spec.rb"
   ]
   s.homepage = %q{http://github.com/djsun/kronos}
@@ -42,6 +43,7 @@ Gem::Specification.new do |s|
      "spec/from_hash_spec.rb",
      "spec/parse_spec.rb",
      "spec/spec_helper.rb",
+     "spec/to_s_spec.rb",
      "spec/valid_spec.rb"
   ]
 

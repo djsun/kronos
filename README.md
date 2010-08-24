@@ -67,7 +67,7 @@ Many Ruby date libraries make the assumption that you are specifying a point (i.
 
 With Kronos, you can compare date objects as follows:
 
-	k_1973 < k_1973          # => true
+    k_1973 < k_1974          # => true
     k_1973 < k_march_1974    # => true
 
 ### A Note about Kronos Comparison Operators

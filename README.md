@@ -61,9 +61,9 @@ Kronos handles date-related comparisons more intelligently.
 
 Many Ruby date libraries make the assumption that you are specifying a point (i.e. a particular date), not an interval (such as an entire month or year). Kronos, on the other hand, lets you specify dates that are intervals:
 
-	k_1973       = Kronos.parse("1973")
-	k_1974       = Kronos.parse("1974")
-	k_march_1974 = Kronos.parse("March 1974")
+    k_1973       = Kronos.parse("1973")
+    k_1974       = Kronos.parse("1974")
+    k_march_1974 = Kronos.parse("March 1974")
 
 With Kronos, you can compare date objects as follows:
 
@@ -78,17 +78,17 @@ Here's an example. If you ask "Does the year 1974 come before March 1974?" a car
 
 Because of this, Konos comparison operators (`<`, `==`, `>`) behave a little bit differently for Kronos objects than for, say, integers. Given any two integers m and n, you can be sure that one of the operators holds. For example:
 
-	m = 1
-	n = 2
-	m < n   # => true
-	m == n  # => false
-	m > n   # => false
+    m = 1
+    n = 2
+    m < n   # => true
+    m == n  # => false
+    m > n   # => false
 
 However, given two Kronos objects k1 and k2 you cannot guarantee that one of the operators will hold. For example:
 
     k_1974 < k_march_1974    # => false
     k_1973 == k_march_1974   # => false
-	k_1974 > k_march_1974    # => false
+    k_1974 > k_march_1974    # => false
 
 Since the two dates are unequal but overlap, Kronos will always return false.
 
@@ -96,8 +96,8 @@ Since the two dates are unequal but overlap, Kronos will always return false.
 
 I plan to implement the `in?` method as follows:
 
-	k_march_1974.in?(k_1974) # => true
-	k_1974.in?(k_march_1974) # => false
+    k_march_1974.in?(k_1974) # => true
+    k_1974.in?(k_march_1974) # => false
 
 ## History
 
@@ -105,8 +105,8 @@ We import a lot of data from government Web sites as part of our work at the Sun
 
 ## Contributors
 
-David James (djsun)
-Eric Mill (klondike)
+* David James (djsun)
+* Eric Mill (klondike)
 
 ## Feedback
 

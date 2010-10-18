@@ -34,8 +34,8 @@ class Kronos
     s = ""
     raise "Invalid" unless valid?
     s << "%04i" % year if year
-    s << "/%02i" % month if month
-    s << "/%02i" % day if day
+    s << "-%02i" % month if month
+    s << "-%02i" % day if day
     s
   end
   

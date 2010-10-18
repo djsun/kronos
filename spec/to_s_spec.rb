@@ -18,16 +18,16 @@ describe "to_s" do
   end
 
   describe "Feb. 2005" do
-    it "should be '2005/02'" do
+    it "should be '2005-02'" do
       k = new_kronos(2005, 2)
-      k.to_s.should == '2005/02'
+      k.to_s.should == '2005-02'
     end
   end
 
   describe "Feb. 9, 2005" do
-    it "should be '2005/02/09'" do
+    it "should be '2005-02-09'" do
       k = new_kronos(2005, 2, 9)
-      k.to_s.should == '2005/02/09'
+      k.to_s.should == '2005-02-09'
     end
   end
 end

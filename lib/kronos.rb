@@ -155,6 +155,7 @@ class Kronos
   end
 
   def to_hash
+    raise Invalid, errors unless valid?
     h = {}
     h['year']  = year  if year
     h['month'] = month if month
@@ -167,7 +168,7 @@ class Kronos
     o.year  = h['year']  if h['year']
     o.month = h['month'] if h['month']
     o.day   = h['day']   if h['day']
-    o if o.valid?
+    o
   end
 
   def self.parse(string)

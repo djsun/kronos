@@ -38,7 +38,10 @@ describe "Kronos from_hash" do
       'month' => nil,
       'day'   => 9,
     })
-    k.should == nil
+    k.should be_instance_of(Kronos)
+    k.year.should == 2002
+    k.month.should == nil
+    k.day.should == 9
   end
 
 end

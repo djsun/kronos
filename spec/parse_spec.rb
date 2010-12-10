@@ -7,11 +7,6 @@ describe "Kronos" do
     c.year.should  == 2001
     c.month.should == 3
     c.day.should   == 15
-    c.to_hash.should == {
-      'year'  => 2001,
-      'month' => 3,
-      'day'   => 15,
-    }
   end
 
   it "January 1976" do
@@ -19,10 +14,6 @@ describe "Kronos" do
     c.year.should  == 1976
     c.month.should == 1
     c.day.should   == nil
-    c.to_hash.should == {
-      'year'  => 1976,
-      'month' => 1,
-    }
   end
 
   it "1991" do
@@ -30,9 +21,6 @@ describe "Kronos" do
     c.year.should  == 1991
     c.month.should == nil
     c.day.should   == nil
-    c.to_hash.should == {
-      'year'  => 1991,
-    }
   end
 
   it "91" do
@@ -40,9 +28,6 @@ describe "Kronos" do
     c.year.should  == 1991
     c.month.should == nil
     c.day.should   == nil
-    c.to_hash.should == {
-      'year'  => 1991,
-    }
   end
 
   it "'91" do
@@ -50,9 +35,6 @@ describe "Kronos" do
     c.year.should  == 1991
     c.month.should == nil
     c.day.should   == nil
-    c.to_hash.should == {
-      'year'  => 1991,
-    }
   end
 
   it "2019" do
@@ -60,9 +42,6 @@ describe "Kronos" do
     c.year.should  == 2019
     c.month.should == nil
     c.day.should   == nil
-    c.to_hash.should == {
-      'year'  => 2019,
-    }
   end
 
   it "19" do
@@ -70,9 +49,6 @@ describe "Kronos" do
     c.year.should  == 2019
     c.month.should == nil
     c.day.should   == nil
-    c.to_hash.should == {
-      'year'  => 2019,
-    }
   end
 
   it "'19" do
@@ -80,9 +56,6 @@ describe "Kronos" do
     c.year.should  == 2019
     c.month.should == nil
     c.day.should   == nil
-    c.to_hash.should == {
-      'year'  => 2019,
-    }
   end
 
   it "1/17/2007" do
@@ -90,11 +63,6 @@ describe "Kronos" do
     c.year.should  == 2007
     c.month.should == 1
     c.day.should   == 17
-    c.to_hash.should == {
-      'year'  => 2007,
-      'month' => 1,
-      'day'   => 17,
-    }
   end
 
   it "Aug-96" do
@@ -102,10 +70,6 @@ describe "Kronos" do
     c.year.should  == 1996
     c.month.should == 8
     c.day.should   == nil
-    c.to_hash.should == {
-      'year'  => 1996,
-      'month' => 8,
-    }
   end
 
   it "15-Mar-96" do
@@ -113,11 +77,6 @@ describe "Kronos" do
     c.year.should  == 1996
     c.month.should == 3
     c.day.should   == 15
-    c.to_hash.should == {
-      'year'  => 1996,
-      'month' => 3,
-      'day'   => 15,
-    }
   end
 
   it "nil" do
@@ -125,7 +84,6 @@ describe "Kronos" do
     c.year.should  == nil
     c.month.should == nil
     c.day.should   == nil
-    c.to_hash.should == {}
   end
 
   it "empty string" do
@@ -133,7 +91,6 @@ describe "Kronos" do
     c.year.should  == nil
     c.month.should == nil
     c.day.should   == nil
-    c.to_hash.should == {}
   end
 
   it "unknown" do
@@ -141,7 +98,6 @@ describe "Kronos" do
     c.year.should  == nil
     c.month.should == nil
     c.day.should   == nil
-    c.to_hash.should == {}
   end
 
   it "prior to 1998" do
@@ -149,7 +105,6 @@ describe "Kronos" do
     c.year.should  == nil
     c.month.should == nil
     c.day.should   == nil
-    c.to_hash.should == {}
   end
 
 end

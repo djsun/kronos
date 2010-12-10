@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe "Kronos Comparisons" do
-  
+
   def new_kronos(year=nil, month=nil, day=nil)
     k = Kronos.new
     k.year  = year if year
@@ -9,7 +9,7 @@ describe "Kronos Comparisons" do
     k.day   = day if day
     k
   end
-  
+
   describe "2005 vs 2005" do
     before do
       @k1 = new_kronos(2005)
@@ -37,7 +37,7 @@ describe "Kronos Comparisons" do
     end
 
   end
-  
+
   describe "2005 vs 2006" do
     before do
       @k1 = new_kronos(2005)
@@ -199,29 +199,29 @@ describe "Kronos Comparisons" do
       (@k1 >= @k2).should == true
     end
   end
-  
+
   describe "(blank) vs 2000" do
     before do
       @k1 = new_kronos()
       @k2 = new_kronos(2000)
     end
-  
+
     it "should not be <" do
       (@k1 < @k2).should == false
     end
-  
+
     it "should not be <=" do
       (@k1 <= @k2).should == false
     end
-  
+
     it "should not be ==" do
       (@k1 == @k2).should == false
     end
-  
+
     it "should not be >" do
       (@k1 > @k2).should == false
     end
-  
+
     it "should not be >=" do
       (@k1 >= @k2).should == false
     end

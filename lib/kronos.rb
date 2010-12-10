@@ -1,11 +1,11 @@
 require 'parsedate'
 
 class Kronos
-  
+
   attr_accessor :year, :month, :day
-  
+
   IGNORE_PATTERN = Regexp.compile("^prior")
-  
+
   def parse(string)
     if string.nil? || string =~ IGNORE_PATTERN
       nil # do nothing
@@ -29,7 +29,7 @@ class Kronos
     end
     self
   end
-  
+
   def to_s
     s = ""
     raise "Invalid" unless valid?
@@ -38,7 +38,7 @@ class Kronos
     s << "-%02i" % day if day
     s
   end
-  
+
   def valid?
     if day && (!month || !year)
       false
@@ -82,21 +82,21 @@ class Kronos
       raise "Unexpected"
     end
   end
-  
+
   def <=(other)
     (self < other) || (self == other)
   end
-  
+
   def ==(other)
     self.year == other.year &&
     self.month == other.month &&
     self.day == other.day 
   end
-  
+
   def >=(other)
     (self > other) || (self == other)
   end
-  
+
   def >(other)
     if !self.year || !other.year
       false
@@ -128,7 +128,7 @@ class Kronos
       raise "Unexpected"
     end
   end
-  
+
   def to_hash
     h = {}
     h['year']  = year  if year
@@ -136,7 +136,7 @@ class Kronos
     h['day']   = day   if day
     h
   end
-  
+
   def self.from_hash(h)
     o = self.new
     o.year  = h['year']  if h['year']
@@ -144,13 +144,13 @@ class Kronos
     o.day   = h['day']   if h['day']
     o if o.valid?
   end
-  
+
   def self.parse(string)
     self.new.parse(string)
   end
-  
+
   protected
-  
+
   def to_full_year(x)
     case x
     when (0 .. 69)  then 2000 + x
@@ -158,5 +158,5 @@ class Kronos
     else x
     end
   end
-  
+
 end

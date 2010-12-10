@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe "Kronos from_hash" do
-  
+
   it "2002" do
     k = Kronos.from_hash({
       'year' => 2002,
@@ -31,7 +31,7 @@ describe "Kronos from_hash" do
     k.month.should == 11
     k.day.should == 9
   end
-  
+
   it "Malformed: ? 9, 2002" do
     k = Kronos.from_hash({
       'year' => 2002,
@@ -39,5 +39,6 @@ describe "Kronos from_hash" do
       'day'   => 9,
     })
     k.should == nil
-  end  
+  end
+
 end

@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe "to_s" do
-  
+
   def new_kronos(year=nil, month=nil, day=nil)
     k = Kronos.new
     k.year  = year if year
@@ -9,7 +9,7 @@ describe "to_s" do
     k.day   = day if day
     k
   end
-  
+
   describe "2005" do
     it "should be '2005'" do
       k = new_kronos(2005)

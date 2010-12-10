@@ -1,7 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe "Kronos" do
-  
+
   it "15-Mar-2001" do
     c = Kronos.parse("15-Mar-2001")
     c.year.should  == 2001
@@ -13,7 +13,7 @@ describe "Kronos" do
       'day'   => 15,
     }
   end
-  
+
   it "January 1976" do
     c = Kronos.parse("January 1976")
     c.year.should  == 1976
@@ -84,7 +84,7 @@ describe "Kronos" do
       'year'  => 2019,
     }
   end
-  
+
   it "1/17/2007" do
     c = Kronos.parse("1/17/2007")
     c.year.should  == 2007
@@ -96,7 +96,7 @@ describe "Kronos" do
       'day'   => 17,
     }
   end
-  
+
   it "Aug-96" do
     c = Kronos.parse("Aug-96")
     c.year.should  == 1996
@@ -119,7 +119,7 @@ describe "Kronos" do
       'day'   => 15,
     }
   end
-  
+
   it "nil" do
     c = Kronos.parse(nil)
     c.year.should  == nil
@@ -127,7 +127,7 @@ describe "Kronos" do
     c.day.should   == nil
     c.to_hash.should == {}
   end
-  
+
   it "empty string" do
     c = Kronos.parse("")
     c.year.should  == nil
@@ -143,7 +143,7 @@ describe "Kronos" do
     c.day.should   == nil
     c.to_hash.should == {}
   end
-  
+
   it "prior to 1998" do
     c = Kronos.parse("prior to 1998")
     c.year.should  == nil
@@ -151,5 +151,5 @@ describe "Kronos" do
     c.day.should   == nil
     c.to_hash.should == {}
   end
-  
+
 end

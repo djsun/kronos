@@ -40,21 +40,37 @@ class Kronos
     s
   end
 
-  def valid?
-    return false if day && (!month || !year)
-    return false if month && !year
-    return false if !year
-    return false if year && !((1970 .. 2069) === year)
-    return false if month && !((1 .. 12) === month)
-    return false if day && !((1 .. 31) === day)
-    if year && month && day
-      begin
-        Date.new(year, month, day)
-      rescue ArgumentError
-        return false
+  def errors
+    errors = []
+    if day && (!month || !year)
+      errors << "if day is given, then month and year must also be given"
+    elsif month && !year
+      errors << "if month is given, then year must also be given"
+    elsif !year
+      errors << "year must be given"
+    else
+      if day && !((1 .. 31) === day)
+        errors << "day (#{day}) must be between 1 and 31"
+      end
+      if month && !((1 .. 12) === month)
+        errors << "month (#{month}) must be between 1 and 12"
+      end
+      if year && !((1970 .. 2069) === year)
+        errors << "year (#{year}) must be between 1970 and 2069"
+      end
+      if errors.length == 0 && day && month && year
+        begin
+          Date.new(year, month, day)
+        rescue ArgumentError
+          errors << "date (#{year}-#{month}-#{day}) must be valid"
+        end
       end
     end
-    true
+    errors
+  end
+
+  def valid?
+    errors.length == 0
   end
 
   def <(other)

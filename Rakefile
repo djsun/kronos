@@ -1,45 +1,26 @@
 require 'rubygems'
 require 'rake'
 
-begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |gem|
-    gem.name = "kronos"
-    gem.summary = %Q{Simple and flexible date parsing.}
-    gem.description = %Q{Kronos provides flexible date parsing. Currently just a thin layer on top of ParseDate.}
-    gem.email = "djames@sunlightfoundation.com"
-    gem.homepage = "http://github.com/djsun/kronos"
-    gem.authors = ["David James"]
-    gem.add_development_dependency "rspec", ">= 1.2.9"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
-  end
-  Jeweler::GemcutterTasks.new
-rescue LoadError
-  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
+require 'jeweler'
+require File.expand_path('../lib/version', __FILE__)
+Jeweler::Tasks.new do |gem|
+  gem.name = "kronos"
+  gem.version = Kronos::Version::STRING
+  gem.summary = %Q{Simple and flexible date parsing.}
+  gem.description = %Q{Kronos provides flexible date parsing. Currently just a thin layer on top of ParseDate.}
+  gem.email = "djames@sunlightfoundation.com"
+  gem.homepage = "http://github.com/djsun/kronos"
+  gem.authors = ["David James"]
+  gem.add_development_dependency "rspec", "~> 2.2"
+  gem.rubyforge_project = 'kronos'
+  # gem is a Gem::Specification
+  # see http://www.rubygems.org/read/chapter/20 for additional settings
 end
 
-require 'spec/rake/spectask'
-Spec::Rake::SpecTask.new(:spec) do |spec|
-  spec.libs << 'lib' << 'spec'
-  spec.spec_files = FileList['spec/**/*_spec.rb']
-end
-
-Spec::Rake::SpecTask.new(:rcov) do |spec|
-  spec.libs << 'lib' << 'spec'
-  spec.pattern = 'spec/**/*_spec.rb'
-  spec.rcov = true
-end
-
-task :spec => :check_dependencies
-
-task :default => :spec
-
-require 'rake/rdoctask'
-Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
-
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title = "kronos #{version}"
-  rdoc.rdoc_files.include('README*')
-  rdoc.rdoc_files.include('lib/**/*.rb')
+require 'rspec/core/rake_task'
+desc "Run specs"
+RSpec::Core::RakeTask.new do |t|
+  t.rspec_opts = %w(--color)
+  # t.rspec_opts = %w(-fs --color)
+  # t.ruby_opts  = %w(-w)
 end

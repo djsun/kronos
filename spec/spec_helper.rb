@@ -1,9 +1,8 @@
-$LOAD_PATH.unshift(File.dirname(__FILE__))
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require 'rubygems'
-require 'kronos'
-require 'spec'
-require 'spec/autorun'
+require 'bundler/setup'
+require 'rspec'
+require File.expand_path('../../lib/kronos', __FILE__)
 
-Spec::Runner.configure do |config|
+Rspec.configure do |c|
+  c.mock_with :rspec
 end

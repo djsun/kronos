@@ -1,3 +1,4 @@
+require File.expand_path("../version", __FILE__)
 require 'parsedate'
 
 class Kronos

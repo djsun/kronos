@@ -41,15 +41,20 @@ class Kronos
   end
 
   def valid?
-    if day && (!month || !year)
-      false
-    elsif month && !year
-      false
-    elsif !year
-      false
-    else
-      true
+    return false if day && (!month || !year)
+    return false if month && !year
+    return false if !year
+    return false if year && !((1970 .. 2069) === year)
+    return false if month && !((1 .. 12) === month)
+    return false if day && !((1 .. 31) === day)
+    if year && month && day
+      begin
+        Date.new(year, month, day)
+      rescue ArgumentError
+        return false
+      end
     end
+    true
   end
 
   def <(other)

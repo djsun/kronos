@@ -3,6 +3,9 @@ require 'parsedate'
 
 class Kronos
 
+  class Exception < RuntimeError; end
+  class Invalid < Exception; end
+
   attr_accessor :year, :month, :day
 
   IGNORE_PATTERN = Regexp.compile("^prior")
@@ -33,7 +36,7 @@ class Kronos
 
   def to_s
     s = ""
-    raise "Invalid" unless valid?
+    raise Invalid, errors unless valid?
     s << "%04i" % year if year
     s << "-%02i" % month if month
     s << "-%02i" % day if day
@@ -97,11 +100,11 @@ class Kronos
         elsif self.day == other.day
           false
         else
-          raise "Unexpected"
+          raise Exception, "unexpected error"
         end
       end
     else
-      raise "Unexpected"
+      raise Exception, "unexpected error"
     end
   end
 
@@ -143,11 +146,11 @@ class Kronos
         elsif self.day == other.day
           false
         else
-          raise "Unexpected"
+          raise Exception, "unexpected error"
         end
       end
     else
-      raise "Unexpected"
+      raise Exception, "unexpected error"
     end
   end
 

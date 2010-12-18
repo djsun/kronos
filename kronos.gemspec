@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{kronos}
-  s.version = "0.1.9"
+  s.version = "0.3.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["David James"]
-  s.date = %q{2010-12-10}
+  s.date = %q{2010-12-18}
   s.description = %q{Kronos provides flexible date parsing. Currently just a thin layer on top of ParseDate.}
   s.email = %q{djames@sunlightfoundation.com}
   s.extra_rdoc_files = [
@@ -17,17 +17,25 @@ Gem::Specification.new do |s|
     "README.md"
   ]
   s.files = [
+    ".bundle/config",
     ".document",
+    "FORMATS.md",
+    "Gemfile",
+    "Gemfile.lock",
     "LICENSE",
+    "NOTES.md",
     "README.md",
     "Rakefile",
     "kronos.gemspec",
     "lib/kronos.rb",
+    "lib/version.rb",
     "spec/compare_spec.rb",
+    "spec/errors_spec.rb",
     "spec/from_hash_spec.rb",
     "spec/parse_spec.rb",
     "spec/spec.opts",
     "spec/spec_helper.rb",
+    "spec/to_hash_spec.rb",
     "spec/to_s_spec.rb",
     "spec/valid_spec.rb"
   ]
@@ -38,9 +46,11 @@ Gem::Specification.new do |s|
   s.summary = %q{Simple and flexible date parsing.}
   s.test_files = [
     "spec/compare_spec.rb",
+    "spec/errors_spec.rb",
     "spec/from_hash_spec.rb",
     "spec/parse_spec.rb",
     "spec/spec_helper.rb",
+    "spec/to_hash_spec.rb",
     "spec/to_s_spec.rb",
     "spec/valid_spec.rb"
   ]
@@ -50,12 +60,21 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<kronos>, [">= 0"])
       s.add_development_dependency(%q<rspec>, ["~> 2.2"])
+      s.add_development_dependency(%q<rspec>, ["~> 2.3"])
+      s.add_development_dependency(%q<jeweler>, ["~> 1.5"])
     else
+      s.add_dependency(%q<kronos>, [">= 0"])
       s.add_dependency(%q<rspec>, ["~> 2.2"])
+      s.add_dependency(%q<rspec>, ["~> 2.3"])
+      s.add_dependency(%q<jeweler>, ["~> 1.5"])
     end
   else
+    s.add_dependency(%q<kronos>, [">= 0"])
     s.add_dependency(%q<rspec>, ["~> 2.2"])
+    s.add_dependency(%q<rspec>, ["~> 2.3"])
+    s.add_dependency(%q<jeweler>, ["~> 1.5"])
   end
 end
 

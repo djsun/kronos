@@ -11,7 +11,8 @@ Jeweler::Tasks.new do |gem|
   gem.email = "djames@sunlightfoundation.com"
   gem.homepage = "http://github.com/djsun/kronos"
   gem.authors = ["David James"]
-  gem.add_development_dependency "rspec", "~> 2.2"
+  gem.add_development_dependency "rspec", "~> 2.3"
+  gem.add_development_dependency "jeweler", "~> 1.5"
   gem.rubyforge_project = 'kronos'
   # gem is a Gem::Specification
   # see http://www.rubygems.org/read/chapter/20 for additional settings

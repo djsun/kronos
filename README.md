@@ -14,12 +14,12 @@ The approach of Kronos is simple: parse what you can and don't be more specific 
     # These give the same results:
     c = Kronos.parse("91")
     c = Kronos.parse("'91")
-    
+
     Kronos.parse("1/17/2007")
     c.year  # => 2007
     c.month # => 1
     c.day   # => 17
-    
+
     Kronos.parse("January 1976")
     c.year  # => 1976
     c.month # => 1
@@ -27,33 +27,52 @@ The approach of Kronos is simple: parse what you can and don't be more specific 
 
 ## Comparison with other libraries
 
-In contrast, other date parsing libraries, such as [Chronic](http://github.com/mojombo/chronic) or [ParseDate](http://ruby-doc.org/stdlib/libdoc/parsedate/rdoc/index.html), try to parse a string into a full Date object, which requires a year, month, and day. Even if a month or day is not specified, they are going to pick one for you. For example:
+In contrast, other date parsing libraries, such as [Chronic](http://github.com/mojombo/chronic), [ParseDate](http://ruby-doc.org/stdlib/libdoc/parsedate/rdoc/index.html), or [Timeliness](https://github.com/adzap/timeliness) try to parse a string into a full Date object, which requires a year, month, and day. Even if a month or day is not specified, they are going to pick one for you. For example:
 
     require 'parsedate'
     require 'chronic'
+    require 'timeliness'
+
+    # "Aug-96"
 
     Chronic.parse("Aug-96")
     # => Fri Aug 16 12:00:00 -0400 1996
     # The day (16) is arbitrarily chosen
-    
+
     ParseDate.parsedate("Aug-96")
     # => [nil, 8, 96, nil, nil, nil, nil, nil]
     # The year (nil) is wrong
     # The day (96) is arbitrarily chosen and out of range
-    
+
+    Timeliness.add_formats(:date, "mmm-yy")
+    t = Timeliness.parse("Aug-96")
+    [t.year, t.month, t.day]
+    # => [1996, 8, 19] 
+    # The day (19) is arbitrarily chosen
+
+    # "1991"
+
     Chronic.parse("1991")
     # => Fri Dec 11 20:31:00 -0500 2009
     # The year is wrong (2009)
     # The month (12) and day (11) are arbitrarily chosen
-    
+
     ParseDate.parsedate("1991")
     # => [nil, 19, 91, nil, nil, nil, nil, nil]
     # The year is wrong (nil)
     # The month (19) and day (91) are arbitrarily chosen and out of range
 
+    Timeliness.add_formats(:date, "yyyy")
+    Timeliness.parse("1991")
+    [t.year, t.month, t.day]
+    # => [1991, 12, 19] 
+    # The month (12) and day (19) is arbitrarily chosen
+
 ## Implementation
 
-Kronos is currently implemented as a thin wrapper over [ParseDate](http://ruby-doc.org/stdlib/libdoc/parsedate/rdoc/index.html).
+The current version of Kronos relies upon a long sequence of `Date.strptime` calls to parse various possible date strings. Why? Because `strptime`, unlike many date-parsing libraries, is (1) pretty good about failing when it cannot parse a string correctly and (2) unlikely to give false positives. However, there are still edge cases, so Kronos runs the potential match in reverse (using `strftime`) to see if it matches the original -- only then is the parse accepted as valid.
+
+As a historical note, Kronos 0.2.x and earlier was implemented as a thin wrapper over [ParseDate](http://ruby-doc.org/stdlib/libdoc/parsedate/rdoc/index.html). This strategy had to change for Ruby 1.9 because ParseDate support was removed from the standard library.
 
 ## Date Comparisons
 
